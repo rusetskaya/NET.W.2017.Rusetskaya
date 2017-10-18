@@ -7,8 +7,8 @@
     <ProjectGuid>{C09C3C17-2AC6-4EB3-B198-61D6CF276998}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NET.W._2017.Rusetskaya._01</RootNamespace>
-    <AssemblyName>NET.W.2017.Rusetskaya.01</AssemblyName>
+    <RootNamespace>LogicQuickSort</RootNamespace>
+    <AssemblyName>LogicQuickSort</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

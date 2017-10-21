@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace IntegerLibrary
 {
@@ -27,9 +28,20 @@ namespace IntegerLibrary
             {
                 sNext = ToSortedString(++nextNumber);
             }
+
             return nextNumber;
 
         }
+
+        public static long NextBiggerNumber(long number, out object resultNumber, out object time)
+        {
+            Stopwatch stopWatch = Stopwatch.StartNew();
+            resultNumber = NextBiggerNumber(number);
+            stopWatch.Stop();
+            time = (stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency;
+            return (long)resultNumber;
+        }
+
         private static bool IsNumberDecrease(long number)
         {
             int prevDigit = (int)number % 10;

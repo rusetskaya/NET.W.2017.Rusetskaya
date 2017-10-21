@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegerLibrary", "IntegerLibrary\IntegerLibrary.csproj", "{EFB36A92-4699-4516-A37E-832694DB805C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegerLibrary.Tests", "IntegerLibrary.Tests\IntegerLibrary.Tests.csproj", "{A2A5C3BD-E5E3-4F8A-8428-63FFD830CF34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFB36A92-4699-4516-A37E-832694DB805C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB36A92-4699-4516-A37E-832694DB805C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB36A92-4699-4516-A37E-832694DB805C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB36A92-4699-4516-A37E-832694DB805C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A5C3BD-E5E3-4F8A-8428-63FFD830CF34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A5C3BD-E5E3-4F8A-8428-63FFD830CF34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A5C3BD-E5E3-4F8A-8428-63FFD830CF34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A5C3BD-E5E3-4F8A-8428-63FFD830CF34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

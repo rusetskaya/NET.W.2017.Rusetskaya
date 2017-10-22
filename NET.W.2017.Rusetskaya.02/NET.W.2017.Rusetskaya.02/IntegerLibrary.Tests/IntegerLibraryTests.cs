@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using static IntegerLibrary.SpecialIntegerLogic;
 using NUnit.Framework;
 using System.Diagnostics;
+using System.Collections;
 
 namespace IntegerLibrary.Tests
 {
@@ -28,6 +29,7 @@ namespace IntegerLibrary.Tests
             return NextBiggerNumber(actual);
         }
 
+
         [TestCase(12, ExpectedResult = true)]
         [TestCase(513, ExpectedResult = true)]
         [TestCase(2017, ExpectedResult = true)]
@@ -46,6 +48,39 @@ namespace IntegerLibrary.Tests
             NextBiggerNumber(actual, out time);
             bool resultTime = (int)Convert.ChangeType(time, typeof(int)) < maxExpectedTime;
             return resultTime; 
+        }
+
+
+        [TestCase(15, 15, 0, 0, ExpectedResult = 15)]
+        [TestCase(8, 15, 0, 0, ExpectedResult = 9)]
+        [TestCase(8, 15, 3, 8, ExpectedResult = 120)]
+        public int InsertNumberIntoBitArrayTest(int numberSource, int numberIn, int i, int j)
+        {
+            return InsertNumber(numberSource, numberIn, i, j);
+        }
+
+        [Test]
+        public void ReverseTest()
+        {
+            BitArray init = new BitArray(new bool[32] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, false, false, false });
+            BitArray expectedResult = new BitArray(new bool[32] { false, false, false, true, true, true, true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false });
+            BitArray actual = Reverse(init);
+            CollectionAssert.AreEqual(expectedResult, actual);
+        }
+
+
+        [TestCase(ExpectedResult = new bool[32] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, false, false, false})]
+        public bool[] GetBinaryRepresentationTest()
+        {
+            return GetBinaryRepresentation(120);
+        }
+
+
+        [TestCase(new bool[32] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, false, false, false }, ExpectedResult = 120)]
+        public int GetIntFromBitArrayTest(bool[] boolArray)
+        {
+            BitArray array = new BitArray(boolArray);
+            return GetIntFromBitArray(array);
         }
     }
 }

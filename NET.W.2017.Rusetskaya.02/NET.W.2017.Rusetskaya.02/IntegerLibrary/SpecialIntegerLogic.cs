@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Collections;
 
 namespace IntegerLibrary
 {
@@ -84,6 +85,76 @@ namespace IntegerLibrary
             char[] array = number.ToString().ToCharArray();
             Array.Sort(array);
             return new String(array);
+        }
+        #endregion
+        #region InsertNumberMethods
+        public static int InsertNumber(int numberSource, int numberIn, int i, int j)
+        {
+            var arrays = ConvertForBitArray(numberSource, numberIn);
+            BitArray arraySource =  new BitArray(arrays.Item1);
+            BitArray arrayIn = new BitArray(arrays.Item2);
+            arraySource = Reverse(arraySource);
+            arrayIn =Reverse(arrayIn);
+            for (int k = 0; k <= (j-i); k++)
+            {
+                arraySource[k+i] = arrayIn[k];
+            }
+            arraySource = Reverse(arraySource);
+            arrayIn = Reverse(arrayIn);
+
+            return GetIntFromBitArray(arraySource);
+        }
+        public static BitArray Reverse(BitArray array)
+        {
+            BitArray temp = new BitArray(array.Count);
+            for (int i = 0; i < array.Count; i++)
+            {
+                temp[i] = array[array.Count - i - 1];
+            }
+            array = new BitArray(temp);
+            return array;
+        }
+        public static int GetIntFromBitArray(BitArray bitArray)
+        {
+            if (bitArray.Count> 32)
+                throw new ArgumentException("Argument length shall be at most 32 bits.");
+
+            int value = 0;
+            for (int i = 31; i >=0 ; i--)
+            {
+                if (bitArray[Math.Abs(i -31)])
+                    value += Convert.ToInt32(Math.Pow(2, i));
+            }
+
+            return value;
+        }
+
+        public static Tuple<BitArray, BitArray> ConvertForBitArray(int numberSource, int numberIn)
+        {
+            BitArray arraySource = new BitArray(GetBinaryRepresentation(numberSource));
+            BitArray arrayIn = new BitArray(GetBinaryRepresentation(numberIn));
+            return Tuple.Create(arraySource, arrayIn);
+        }
+        public static bool[] GetBinaryRepresentation(int number)
+        {
+            //List<bool> result = new List<bool>();
+            bool[] result = new bool[32];
+            int i = 0;
+            while (number > 0)
+            {
+                int remainder = number % 2;
+                number = number / 2;
+                result[i] = (remainder == 1);
+                i++;
+            }
+            Array.Reverse(result);
+            while (result.Length != 32)
+            {
+                result[i] = false;
+                i++;
+            }
+            return result;
+            //return result.ToArray();
         }
         #endregion
     }

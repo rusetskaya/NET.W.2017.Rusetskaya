@@ -51,13 +51,13 @@ namespace IntegerLibrary
 
         }
 
-        public static long NextBiggerNumber(long number, out object resultNumber, out object time)
+        public static long NextBiggerNumber(long number, out object time)
         {
             Stopwatch stopWatch = Stopwatch.StartNew();
-            resultNumber = NextBiggerNumber(number);
+            long resultNumber = NextBiggerNumber(number);
             stopWatch.Stop();
             time = (stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency;
-            return (long)resultNumber;
+            return resultNumber;
         }
 
         private static bool IsNumberDecrease(long number)

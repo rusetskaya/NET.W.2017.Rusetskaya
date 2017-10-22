@@ -186,5 +186,42 @@ namespace IntegerLibrary
             return Math.Floor((result * accuracy + 0.1)) / accuracy;
         }
         #endregion
+
+        #region FilterDigitMethods
+        public static int[] FilterDigit(int digit, params int[] list)
+        {
+            if (digit / 10 != 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(digit));
+            }
+
+            if (list == null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+            List<int> result = new List<int>();
+
+            foreach (int number in list)
+            {
+                if (IsDigitInList(number, digit))
+                {
+                    result.Add(number);
+                }
+            }
+
+            return result.ToArray();
+        }
+
+        public static bool IsDigitInList(int number, int digit)
+        {
+            while (number >= 0)
+            {
+                if (number % 10 == digit)
+                    return true;
+                number /= 10;
+            }
+            return false;
+        }
+        #endregion
     }
 }

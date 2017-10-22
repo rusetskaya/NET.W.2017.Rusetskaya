@@ -13,6 +13,7 @@ namespace IntegerLibrary.Tests
 {
     public class IntegerLibraryTests
     {
+        #region NextBiggerNumberTests
         [TestCase(12, ExpectedResult = 21)]
         [TestCase(513, ExpectedResult = 531)]
         [TestCase(2017, ExpectedResult = 2071)]
@@ -47,10 +48,12 @@ namespace IntegerLibrary.Tests
             object time;
             NextBiggerNumber(actual, out time);
             bool resultTime = (int)Convert.ChangeType(time, typeof(int)) < maxExpectedTime;
-            return resultTime; 
+            return resultTime;
         }
 
+        #endregion
 
+        #region InsertNumberTests
         [TestCase(15, 15, 0, 0, ExpectedResult = 15)]
         [TestCase(8, 15, 0, 0, ExpectedResult = 9)]
         [TestCase(8, 15, 3, 8, ExpectedResult = 120)]
@@ -69,7 +72,7 @@ namespace IntegerLibrary.Tests
         }
 
 
-        [TestCase(ExpectedResult = new bool[32] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, false, false, false})]
+        [TestCase(ExpectedResult = new bool[32] { false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, true, true, true, true, false, false, false })]
         public bool[] GetBinaryRepresentationTest()
         {
             return GetBinaryRepresentation(120);
@@ -82,5 +85,33 @@ namespace IntegerLibrary.Tests
             BitArray array = new BitArray(boolArray);
             return GetIntFromBitArray(array);
         }
+        #endregion
+
+        #region FindNthRootTests
+        [TestCase(1, 5, 0.0001, ExpectedResult = 1)]
+        [TestCase(8, 3, 0.0001, ExpectedResult = 2)]
+        [TestCase(0.001, 3, 0.0001, ExpectedResult = 0.1)]
+        [TestCase(0.04100625, 4, 0.0001, ExpectedResult = 0.45)]
+        [TestCase(8, 3, 0.0001, ExpectedResult = 2)]
+        [TestCase(0.0279936, 7, 0.0001, ExpectedResult = 0.6)]
+        [TestCase(0.0081, 4, 0.1, ExpectedResult = 0.3)]
+        //[TestCase(-0.008, 3, 0.1, ExpectedResult = -0.2)]
+        [TestCase(0.004241979, 9, 0.00000001, ExpectedResult = 0.545)]
+
+        public double FindNthRoot_Number_Degree_Precision(double number, int degree, double precision)
+        {
+            return Math.Round(FindNthRoot(number, degree, precision), 3);
+            
+        }
+
+
+        [TestCase(8, 15, -7, -5)]// <-ArgumentOutOfRangeException
+        [TestCase(8, 15, -0.6, -0.1)]// <-ArgumentOutOfRangeException	
+        public void FindNthRoot_Number_Degree_Precision_ArgumentOutOfRangeException(double number, int degree,
+            double precision, double expected)
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => FindNthRoot(number, degree, precision));
+        }
+        #endregion
     }
 }

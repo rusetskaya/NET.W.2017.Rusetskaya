@@ -87,6 +87,7 @@ namespace IntegerLibrary
             return new String(array);
         }
         #endregion
+
         #region InsertNumberMethods
         public static int InsertNumber(int numberSource, int numberIn, int i, int j)
         {
@@ -155,6 +156,34 @@ namespace IntegerLibrary
             }
             return result;
             //return result.ToArray();
+        }
+        #endregion
+
+        #region FindNthRootMethods
+        public static double FindNthRoot(double number, int degree, double precision)
+        {
+            if ((precision < 0) || (degree < 0))
+            {
+                throw new ArgumentOutOfRangeException("Incorrect precision.");
+            }
+            double supposition = Math.Round((number / degree),6);
+            double result = supposition;
+            result = ((degree - 1) * result + (number / Math.Pow(result, degree - 1))) / degree;
+            while (Math.Abs(result - supposition) > precision)
+            {
+                supposition = result;
+                result = ((degree - 1) * result + (number / Math.Pow(result, degree - 1))) / degree;
+            }
+
+            int accuracy = 1;
+            double tempPrecision = precision;
+            while (tempPrecision < 1)
+            {
+                accuracy *= 10;
+                tempPrecision *= 10;
+            }
+
+            return Math.Floor((result * accuracy + 0.1)) / accuracy;
         }
         #endregion
     }

@@ -113,5 +113,6 @@ namespace IntegerLibrary.Tests
             Assert.Throws<ArgumentOutOfRangeException>(() => FindNthRoot(number, degree, precision));
         }
         #endregion
+
     }
 }

@@ -190,7 +190,7 @@ namespace IntegerLibrary
         #region FilterDigitMethods
         public static int[] FilterDigit(int digit, params int[] list)
         {
-            if (digit / 10 != 0)
+            if (digit / 10 != 0 || digit<0)
             {
                 throw new ArgumentOutOfRangeException(nameof(digit));
             }
@@ -214,7 +214,11 @@ namespace IntegerLibrary
 
         public static bool IsDigitInList(int number, int digit)
         {
-            while (number >= 0)
+            if (number == 0 && digit == 0)
+            {
+                return true;
+            }
+            while (number > 0)
             {
                 if (number % 10 == digit)
                     return true;

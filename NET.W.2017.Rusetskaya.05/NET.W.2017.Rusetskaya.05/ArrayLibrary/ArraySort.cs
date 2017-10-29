@@ -12,7 +12,9 @@ namespace ArrayLibrary
         {
             int Compare(int[] lhs, int[] rhs);
         }
-
+        /// <summary>
+        /// Compare sum by inc
+        /// </summary>
         public class ComparerSumByInc : IComparer
         { 
             public int Compare(int[] lhs, int[] rhs)
@@ -28,6 +30,10 @@ namespace ArrayLibrary
                 return lhs.Sum() - rhs.Sum();
             }
         }
+
+        /// <summary>
+        /// Compare sum by dec
+        /// </summary>
         public class ComparerSumByDec : IComparer
         { 
             public int Compare(int[] lhs, int[] rhs)
@@ -43,7 +49,9 @@ namespace ArrayLibrary
                 return rhs.Sum() - lhs.Sum();
             }
         }
-
+        /// <summary>
+        /// compare max by inc
+        /// </summary>
         public class ComparerMaxByInc : IComparer
         {
             public int Compare(int[] lhs, int[] rhs)
@@ -59,6 +67,9 @@ namespace ArrayLibrary
                 return lhs.Max() - rhs.Max();
             }
         }
+        /// <summary>
+        /// compare max by dec
+        /// </summary>
         public class ComparerMaxByDec : IComparer
         { 
             public int Compare(int[] lhs, int[] rhs)
@@ -74,7 +85,9 @@ namespace ArrayLibrary
                 return rhs.Max() - lhs.Max();
             }
         }
-
+        /// <summary>
+        /// compare min by inc
+        /// </summary>
         public class ComparerMinByInc : IComparer
         {
             public int Compare(int[] lhs, int[] rhs)
@@ -90,6 +103,9 @@ namespace ArrayLibrary
                 return lhs.Min() - rhs.Min();
             }
         }
+        /// <summary>
+        /// compare min by dec
+        /// </summary>
         public class ComparerMinByDec : IComparer
         {
             public int Compare(int[] lhs, int[] rhs)

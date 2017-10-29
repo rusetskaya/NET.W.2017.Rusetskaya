@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegerLibrary.Tests", "Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegerLibrary.MSUnitTests", "IntegerLibrary.MSUnitTests\IntegerLibrary.MSUnitTests.csproj", "{880A5728-1DFF-45FE-A008-C53EAFE9B45F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionLibrary", "ExtensionLibrary\ExtensionLibrary.csproj", "{60EADB03-A34D-4B7D-8A15-18FA2F9E85EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{880A5728-1DFF-45FE-A008-C53EAFE9B45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{880A5728-1DFF-45FE-A008-C53EAFE9B45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{880A5728-1DFF-45FE-A008-C53EAFE9B45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EADB03-A34D-4B7D-8A15-18FA2F9E85EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EADB03-A34D-4B7D-8A15-18FA2F9E85EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EADB03-A34D-4B7D-8A15-18FA2F9E85EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EADB03-A34D-4B7D-8A15-18FA2F9E85EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

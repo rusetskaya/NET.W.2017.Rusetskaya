@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExtensionLibrary
 {
-    //!!!!!!!!!! Переделать с пом. битовых операций + тесты
+    //!!!!!!!!!! Переделать с пом. битовых операций + тесты (после дедлайна 25.10 18.00)
     public static class DoubleRepresentationInStringBinary
     {
         public static string DoubleToStringFormatIEEE754(double number)

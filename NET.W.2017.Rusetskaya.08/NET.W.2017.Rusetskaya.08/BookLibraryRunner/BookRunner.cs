@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using BookLibrary;
 using static BookLibrary.Book;
-using  static  BookLibrary.IBookListStorage;
-using static  BookLibrary.BookListService;
+using static BookLibrary.IBookListStorage;
+using static BookLibrary.BookListService;
 
-namespace Runner
+namespace BookLibraryRunner
 {
     class BookRunner
     {
@@ -20,7 +20,7 @@ namespace Runner
                 new Book(234577777, "author3", "name3", "publishingHouse3", 2014, 500, 30.15),
                 new Book(234577777, "author3", "name3", "publishingHouse3", 2014, 500, 30.15)
             };
-            
+
             BookListService service = new BookListService();
             //service.AddBook(books[0],books[1]);
             service.AddBook(books[0]);
@@ -62,7 +62,7 @@ namespace Runner
                 //Console.WriteLine(newService.GetBookList().Count);
                 Console.WriteLine(newService.GetBookList()[i]);
             }
-            
+
             Console.ReadLine();
         }
     }

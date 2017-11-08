@@ -9,8 +9,8 @@ namespace BankAccount
 {
     public class BaseAccount : BankAccount
     {
-        const string GRADATION = "Base";
-        public BaseAccount() { }
+        public const string GRADATION = "Base";
+        public BaseAccount(){ }
         public BaseAccount(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus, gradation)
         {
             Gradation = GRADATION;

@@ -7,10 +7,11 @@ using static BankAccount.BankAccount;
 
 namespace BankAccount
 {
-    class Platinum : BankAccount
+    public class PlatinumAccount : BankAccount
     {
-        const string GRADATION = "Platinum";
-        public Platinum(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus, gradation)
+        public const string GRADATION = "Platinum";
+        public PlatinumAccount() { }
+        public PlatinumAccount(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus, gradation)
         {
             Gradation = GRADATION;
         }

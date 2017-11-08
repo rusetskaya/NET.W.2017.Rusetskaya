@@ -12,7 +12,7 @@ namespace BankAccount
 {
     public class AccountManager
     {
-        public BankAccount CreateAccount(string accountType)
+        public BankAccount CreateBankAccount(string accountType)
         {
             BankAccount bankAccount;
             if (accountType.Equals(BaseAccount.GRADATION))
@@ -29,7 +29,7 @@ namespace BankAccount
             }
             return null;
         }
-        public void CloseAccount(BankAccount bankAccount)
+        public void CloseBankAccount(BankAccount bankAccount)
         {
             bankAccount = null;
         }

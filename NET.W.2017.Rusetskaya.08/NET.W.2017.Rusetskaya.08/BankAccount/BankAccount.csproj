@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountManager.cs" />
     <Compile Include="BankAccount.cs" />
+    <Compile Include="BankAccountBinaryFileStorage.cs" />
+    <Compile Include="IBankAccountStorage.cs" />
+    <Compile Include="PlatinumAccount.cs" />
+    <Compile Include="GoldAccount.cs" />
+    <Compile Include="BaseAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,8 +10,8 @@ namespace BankAccount
     public class GoldAccount : BankAccount
     {
         public const string GRADATION = "Gold";
-        public GoldAccount() { }
-        public GoldAccount(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus, gradation)
+        public GoldAccount() { Gradation = GRADATION; }
+        public GoldAccount(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus)
         {
             Gradation = GRADATION;
         }
@@ -24,7 +24,11 @@ namespace BankAccount
             }
             if (type == BonusTypes.Subtraction)
             {
-                Bonus -= (int)((Sum + accruedSum) / Sum) + 1;
+                int temp = (int)((Sum + accruedSum) / Sum)+1;
+                if (Bonus - temp >= 0)
+                {
+                    Bonus -= temp;
+                }
             }
         }
     }

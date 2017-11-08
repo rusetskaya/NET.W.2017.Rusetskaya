@@ -10,10 +10,10 @@ namespace BankAccount
     public class PlatinumAccount : BankAccount
     {
         public const string GRADATION = "Platinum";
-        public PlatinumAccount() { }
-        public PlatinumAccount(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus, gradation)
+        public PlatinumAccount() { Gradation = GRADATION; }
+        public PlatinumAccount(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus)
         {
-            Gradation = GRADATION;
+            this.Gradation = GRADATION;
         }
 
         protected override void CountBonus(long accruedSum, BonusTypes type)
@@ -24,7 +24,11 @@ namespace BankAccount
             }
             if (type == BonusTypes.Subtraction)
             {
-                Bonus -= (int)((Sum + accruedSum) / Sum) + 2;
+                int temp = (int)((Sum + accruedSum) / Sum)+2;
+                if (Bonus - temp >= 0)
+                {
+                    Bonus -= temp;
+                }
             }
         }
     }

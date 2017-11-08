@@ -14,7 +14,7 @@ namespace BankAccount
     {
         public BankAccount CreateBankAccount(string accountType)
         {
-            BankAccount bankAccount;
+            BankAccount bankAccount = null;
             if (accountType.Equals(BaseAccount.GRADATION))
             {
                 bankAccount = new BaseAccount();
@@ -27,7 +27,7 @@ namespace BankAccount
             {
                 bankAccount = new PlatinumAccount();
             }
-            return null;
+            return bankAccount;
         }
         public void CloseBankAccount(BankAccount bankAccount)
         {

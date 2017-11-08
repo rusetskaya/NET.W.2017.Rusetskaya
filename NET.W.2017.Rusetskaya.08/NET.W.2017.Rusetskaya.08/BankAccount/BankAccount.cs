@@ -35,7 +35,7 @@ namespace BankAccount
         }
         public string Gradation { get; set; }
 
-        protected BankAccount(int id, string name, string surname, long sum, int bonus, string gradation)
+        protected BankAccount(int id, string name, string surname, long sum, int bonus)
         {
             this.id = id;
             if (name.Length>0)
@@ -55,14 +55,8 @@ namespace BankAccount
         public void AddAccontInfo(int id, string name, string surname, long sum, int bonus)
         {
             this.id = id;
-            if (name.Length > 0)
-            {
-                this.name = name;
-            }
-            if (surname.Length > 0)
-            {
-                this.surname = surname;
-            }
+            this.name = name;
+            this.surname = surname;
             Sum = sum;
             Bonus = bonus;
         }

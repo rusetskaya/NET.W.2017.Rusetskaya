@@ -33,8 +33,10 @@ namespace BankAccount
                     bonus = reader.ReadInt32();
                     gradation = reader.ReadString();
 
-                    bankAccountsList.Add(new AccountManager().CreateBankAccount(gradation));
-                    bankAccountsList[bankAccountsList.Count].AddAccontInfo(id, name, surname, sum, bonus);
+                    AccountManager manager = new AccountManager();
+                    bankAccountsList.Add(manager.CreateBankAccount(gradation));
+                    BankAccount tempAccount = bankAccountsList.Last();
+                    tempAccount.AddAccontInfo(id, name, surname, sum, bonus);
                 }
             }
 

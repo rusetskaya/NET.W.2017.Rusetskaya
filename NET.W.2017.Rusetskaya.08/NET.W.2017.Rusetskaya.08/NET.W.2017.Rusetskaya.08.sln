@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountRunner", "BankAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibraryRunner", "BookLibraryRunner\BookLibraryRunner.csproj", "{2A638BAA-370F-4F74-991B-F235BB9FC397}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookLibrary.Tests", "BookLibrary.Tests\BookLibrary.Tests.csproj", "{5DF30476-568B-4173-A195-3CC17C939660}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2A638BAA-370F-4F74-991B-F235BB9FC397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A638BAA-370F-4F74-991B-F235BB9FC397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A638BAA-370F-4F74-991B-F235BB9FC397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DF30476-568B-4173-A195-3CC17C939660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DF30476-568B-4173-A195-3CC17C939660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DF30476-568B-4173-A195-3CC17C939660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DF30476-568B-4173-A195-3CC17C939660}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

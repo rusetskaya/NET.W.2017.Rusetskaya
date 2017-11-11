@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using static IntegerLibrary.GreatestCommonDivisor;
+
 namespace IntegerLibrary.MSUnitTests
 {
     [TestClass]
@@ -12,7 +13,7 @@ namespace IntegerLibrary.MSUnitTests
         {
             int first = -5, second = 10;
             int expected = 5;
-            Assert.AreEqual(expected,EuclidsAlgorithm(first, second).Item1);
+            Assert.AreEqual(expected, EuclidsAlgorithm(first, second).Item1);
         }
 
         [TestMethod]
@@ -46,10 +47,11 @@ namespace IntegerLibrary.MSUnitTests
             int expected = 5;
             Assert.AreEqual(expected, EuclidsAlgorithm(first, second).Item1);
         }
+
         [TestMethod]
         public void GreatestCommonDivisor_ByEuclide_568_26_70_minus34_20_equals_2()
         {
-            int[] numbers = new int[]{ 568,26,70,-34,20 };
+            int[] numbers = new int[] { 568, 26, 70, -34, 20 };
             int expected = 2;
             Assert.AreEqual(expected, EuclidsAlgorithm(numbers).Item1);
         }
@@ -95,6 +97,7 @@ namespace IntegerLibrary.MSUnitTests
             int expected = 5;
             Assert.AreEqual(expected, SteinsAlgorithm(first, second).Item1);
         }
+
         [TestMethod]
         public void GreatestCommonDivisor_BySteins_568_26_70_minus34_20_equals_2()
         {
@@ -103,7 +106,5 @@ namespace IntegerLibrary.MSUnitTests
             Assert.AreEqual(expected, SteinsAlgorithm(numbers).Item1);
         }
         #endregion
-
-
     }
 }

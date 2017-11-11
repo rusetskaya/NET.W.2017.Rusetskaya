@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using static IntegerLibrary.GreatestCommonDivisor;
 
-
 namespace IntegerLibrary.Tests
 {
-    //VS почему-то не видит эти тесты
+    [TestFixture]
     public class GreatestCommonDivisorTests
     {
         [TestCase(345, 70, ExpectedResult = 5)]

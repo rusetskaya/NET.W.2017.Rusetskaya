@@ -23,10 +23,12 @@ namespace IntegerLibrary
             {
                 tempGCD = EuclidsAlgorithm(tempGCD, numbers[i]).Item1;
             }
+
             stopWatch.Stop();
             int resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
             return Tuple.Create(tempGCD, resultTime);
         }
+
         /// <summary>
         /// Counts Greatest Common Divisor
         /// </summary>
@@ -42,14 +44,14 @@ namespace IntegerLibrary
             int resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
             return Tuple.Create(tempGCD, resultTime);
         }
+
         /// <summary>
         /// Counts Greatest Common Divisor
         /// </summary>
         /// <param name="first"></param>
         /// <param name="second"></param>
         /// <returns>Tuple with gcd and time</returns>
-
-        public static Tuple<int,int> EuclidsAlgorithm(int first, int second)
+        public static Tuple<int, int> EuclidsAlgorithm(int first, int second)
         {
             Stopwatch stopWatch = Stopwatch.StartNew();
             int resultTime;
@@ -58,6 +60,7 @@ namespace IntegerLibrary
                 first = Math.Abs(first);
                 second = Math.Abs(second);
             }
+
             if (Validation(first, second) == 1)
             {
                 if (first == 0)
@@ -66,12 +69,14 @@ namespace IntegerLibrary
                     resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                     return Tuple.Create(second, resultTime);
                 }
+
                 if (second == 0)
                 {
                     stopWatch.Stop();
                     resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                     return Tuple.Create(first, resultTime);
                 }
+
                 while (first != second)
                 {
                     if (first > second)
@@ -83,13 +88,15 @@ namespace IntegerLibrary
                         second = second - first;
                     }
                 }
+
                 stopWatch.Stop();
                 resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                 return Tuple.Create(first, resultTime);
-
             }
-            else throw new ArgumentOutOfRangeException(nameof(first));
-            
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(first));
+            }
         }
 
         #endregion
@@ -108,10 +115,12 @@ namespace IntegerLibrary
             {
                 tempGCD = SteinsAlgorithm(tempGCD, numbers[i]).Item1;
             }
+
             stopWatch.Stop();
             int resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
             return Tuple.Create(tempGCD, resultTime);
         }
+
         /// <summary>
         /// Counts Greatest Common Divisor
         /// </summary>
@@ -127,6 +136,7 @@ namespace IntegerLibrary
             int resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
             return Tuple.Create(tempGCD, resultTime);
         }
+
         /// <summary>
         /// Counts Greatest Common Divisor
         /// </summary>
@@ -143,6 +153,7 @@ namespace IntegerLibrary
                 first = Math.Abs(first);
                 second = Math.Abs(second);
             }
+
             if (Validation(first, second) == 1)
             {
                 if (first == second)
@@ -151,18 +162,21 @@ namespace IntegerLibrary
                     resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                     return Tuple.Create(first, resultTime);
                 }
+
                 if (first == 0)
                 {
                     stopWatch.Stop();
                     resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                     return Tuple.Create(second, resultTime);
                 }
+
                 if (second == 0)
                 {
                     stopWatch.Stop();
                     resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                     return Tuple.Create(first, resultTime);
                 }
+
                 if ((~first & 1) != 0)
                 {
                     if ((second & 1) != 0)
@@ -180,6 +194,7 @@ namespace IntegerLibrary
                         return Tuple.Create(tempGCD, resultTime);
                     }
                 }
+
                 if ((~second & 1) != 0)
                 {
                     tempGCD = SteinsAlgorithm(first, second >> 1).Item1;
@@ -187,6 +202,7 @@ namespace IntegerLibrary
                     resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                     return Tuple.Create(tempGCD, resultTime);
                 }
+
                 if (first > second)
                 {
                     tempGCD = SteinsAlgorithm((first - second) >> 1, second).Item1;
@@ -194,12 +210,16 @@ namespace IntegerLibrary
                     resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                     return Tuple.Create(tempGCD, resultTime);
                 }
+
                 tempGCD = SteinsAlgorithm((second - first) >> 1, first).Item1;
                 stopWatch.Stop();
                 resultTime = (int)((stopWatch.ElapsedTicks * 1000.0) / Stopwatch.Frequency);
                 return Tuple.Create(tempGCD, resultTime);
             }
-            else throw new ArgumentOutOfRangeException(nameof(first));
+            else
+            {
+                throw new ArgumentOutOfRangeException(nameof(first));
+            }
         }
         #endregion
 
@@ -213,7 +233,7 @@ namespace IntegerLibrary
         ///            1 if valid
         ///            0 if should be Abs
         /// </returns>
-        private static int Validation(int first, int second) //Будет возвращать только -1, 0, 1  как результат проверки
+        private static int Validation(int first, int second) ////Будет возвращать только -1, 0, 1  как результат проверки
         {
             int valid = 1;
             int invalid = -1;
@@ -224,7 +244,7 @@ namespace IntegerLibrary
             }
             else
             {
-                if (first<0 || second<0)
+                if (first < 0 || second < 0)
                 {
                     return needAbs;
                 }

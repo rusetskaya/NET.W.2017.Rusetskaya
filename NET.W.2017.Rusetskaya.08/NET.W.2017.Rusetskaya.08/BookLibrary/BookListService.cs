@@ -9,7 +9,7 @@ namespace BookLibrary
 {
     public class BookListService
     {
-       const double EPS = 0.001;
+       private const double EPS = 0.001;
        private List<Book> bookList = new List<Book>();
 
        public interface IFinder
@@ -28,6 +28,7 @@ namespace BookLibrary
             {
                 throw new ArgumentNullException(nameof(book));
             }
+
             bookList.Add(book);
         }
 
@@ -35,11 +36,12 @@ namespace BookLibrary
         {
             foreach (Book book in books)
             {
-                if (ReferenceEquals(book,null))
+                if (ReferenceEquals(book, null))
                 {
                     throw new ArgumentNullException(nameof(books));
                 }
             }
+
             bookList.AddRange(books);
         }
 
@@ -49,6 +51,7 @@ namespace BookLibrary
             {
                 throw new ArgumentNullException(nameof(book));
             }
+
             bookList.Remove(book);
         }
 
@@ -56,7 +59,7 @@ namespace BookLibrary
         {
             for (int i = 0; i < bookList.Count; i++)
             {
-                if (bookList[i].Isbn == isbn)
+                if (bookList[i].Isbn.Equals(isbn))
                 {
                     bookList.Remove(bookList[i]);
                     break;
@@ -64,15 +67,18 @@ namespace BookLibrary
             }
         }
 
-        public Book  FindBookByTag(IFinder tagFinder)
+        public Book FindBookByTag(IFinder tagFinder)
         {
-            if (ReferenceEquals(bookList,null))
+            if (ReferenceEquals(bookList, null))
             {
                 throw new ArgumentNullException(nameof(bookList));
             }
 
-            if (ReferenceEquals(tagFinder.Find(bookList),null) == false)
+            if (ReferenceEquals(tagFinder.Find(bookList), null) == false)
+            {
                 return tagFinder.Find(bookList);
+            }
+
             return null;
         }
 
@@ -83,13 +89,13 @@ namespace BookLibrary
                 throw new ArgumentNullException(nameof(bookList));
             }
 
-            for (int i = 0; i < bookList.Count-1; i++)
+            for (int i = 0; i < bookList.Count - 1; i++)
             {
-               if (comparer.Compare(bookList[i], bookList[i+1])>0)
+               if (comparer.Compare(bookList[i], bookList[i + 1]) > 0)
                {
                    Book temp = bookList[i];
-                   bookList[i] = bookList[i+1];
-                   bookList[i+1] = temp;
+                   bookList[i] = bookList[i + 1];
+                   bookList[i + 1] = temp;
                 }
             }
         }
@@ -120,6 +126,7 @@ namespace BookLibrary
             {
                 Console.WriteLine(book);
             }
+
             Console.WriteLine();
         }
     }

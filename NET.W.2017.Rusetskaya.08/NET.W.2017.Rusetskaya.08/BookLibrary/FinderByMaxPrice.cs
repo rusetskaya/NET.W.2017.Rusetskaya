@@ -11,20 +11,22 @@ namespace BookLibrary
     {
         public Book Find(List<Book> books)
         {
-            if (ReferenceEquals(books,null))
+            if (ReferenceEquals(books, null))
             {
                 throw new ArgumentNullException(nameof(books));
             }
+
             double tempPrice = books[0].Price;
             Book resultBook = books[0];
             for (int i = 1; i < books.Count; i++)
             {
-                if (books[i].Price>=tempPrice)
+                if (books[i].Price >= tempPrice)
                 {
                     tempPrice = books[i].Price;
                     resultBook = books[i];
                 }
             }
+
             return resultBook;
         }
     }

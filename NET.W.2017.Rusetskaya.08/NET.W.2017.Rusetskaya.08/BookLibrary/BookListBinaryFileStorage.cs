@@ -10,12 +10,12 @@ namespace BookLibrary
 {
     public class BookListBinaryFileStorage : IBookListStorage
     {
-        const string FILENAME = "BookList.dat"; //It's only for a while
+        private const string FILENAME = "BookList.dat";
 
         public IEnumerable<Book> ReadFromStorage()
         {
             List<Book> bookList = new List<Book>();
-            int isbn;
+            string isbn;
             string author;
             string name;
             string publishingHouse;
@@ -25,18 +25,17 @@ namespace BookLibrary
 
             using (BinaryReader reader = new BinaryReader(File.Open(FILENAME, FileMode.Open)))
             {
-                //while (reader.PeekChar() > -1) //PeekChar() create exc. if number of books>=3 "System.ArgumentException"
-                //(Буфер выходных символов не достаточен для хранения закодированных символов)
+                ////while (reader.PeekChar() > -1) //PeekChar() create exc. if number of books>=3 "System.ArgumentException"
+                ////(Буфер выходных символов не достаточен для хранения закодированных символов)
                 {
-                    isbn = reader.ReadInt32();
+                    isbn = reader.ReadString();
                     author = reader.ReadString();
                     name = reader.ReadString();
                     publishingHouse = reader.ReadString();
                     publishingYear = reader.ReadInt32();
                     numberOfPages = reader.ReadInt32();
                     price = reader.ReadDouble();
-
-                    bookList.Add(new Book(isbn,author,name,publishingHouse,publishingYear,numberOfPages,price));
+                    bookList.Add(new Book(isbn, author, name, publishingHouse, publishingYear, numberOfPages, price));
                 }
             }
 

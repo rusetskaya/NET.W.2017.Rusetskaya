@@ -18,7 +18,6 @@ namespace BookLibrary
             this.publishingYear = publishingYear;
         }
 
-        
         public Book Find(List<Book> books)
         {
             if (ReferenceEquals(books, null))
@@ -33,6 +32,7 @@ namespace BookLibrary
                     return books[i];
                 }
             }
+
             return null;
         }
     }

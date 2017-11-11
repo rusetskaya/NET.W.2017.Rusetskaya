@@ -15,12 +15,15 @@ namespace BookLibraryRunner
         static void Main(string[] args)
         {
             Book[] books = {
-                new Book(11234, "author1", "name1", "publishingHouse1", 1995, 3400, 20.050),
-                new Book(1678995, "author2", "name2", "publishingHouse2", 2016, 500, 30.151),
-                new Book(234577777, "author3", "name3", "publishingHouse3", 2014, 500, 30.15),
-                new Book(234577777, "author3", "name3", "publishingHouse3", 2014, 500, 30.15)
+                new Book("978-0-7356-6745-7", "Jeffrey Richter", "CLR via C#", "Microsoft Press", 2012, 826, 59.99)
+                //new Book("1678995", "author2", "name2", "publishingHouse2", 2016, 500, 30.151),
+                //new Book("234577777", "author3", "name3", "publishingHouse3", 2014, 500, 30.15),
+                //new Book("234577777", "author3", "name3", "publishingHouse3", 2014, 500, 30.15)
             };
 
+
+
+            /*
             BookListService service = new BookListService();
             //service.AddBook(books[0],books[1]);
             service.AddBook(books[0]);
@@ -62,7 +65,7 @@ namespace BookLibraryRunner
                 //Console.WriteLine(newService.GetBookList().Count);
                 Console.WriteLine(newService.GetBookList()[i]);
             }
-
+            */
             Console.ReadLine();
         }
     }

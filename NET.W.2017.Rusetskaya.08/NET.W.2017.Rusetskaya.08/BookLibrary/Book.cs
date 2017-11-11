@@ -9,12 +9,12 @@ namespace BookLibrary
 {
     public class Book : IEqualityComparer, IComparable
     {
-        const double EPS = 0.001;
-        private readonly int INITIAL_YEAR = 1500;
-        private readonly int CURRENT_YEAR = 2017; 
+        public const double EPS = 0.001;
+        private const int INITIALYEAR = 1500;
+        private const int CURRENTYEAR = 2017; 
 
         #region Private fields
-        private int isbn;
+        private string isbn;
         private string author;
         private string name;
         private string publishingHouse;
@@ -23,74 +23,92 @@ namespace BookLibrary
         private double price;
         #endregion
 
-        #region Public properties
-
-        public int Isbn => isbn;
-        public string Author => author;
-        public string Name => name;
-        public string PublishingHouse => publishingHouse;
-        public int PublishingYear => publishingYear;
-        public int NumberOfPages => numberOfPages;
-        public double Price => price;
-
-        #endregion
-
         #region Public constructors
-        public Book() { }
+        public Book()
+        {
+        }
 
-        public Book(int isbn, string author, string name, string publishingHouse, int publishingYear, int numberOfPages, double price)
+        public Book(string isbn, string author, string name, string publishingHouse, int publishingYear, int numberOfPages, double price)
         {
             this.isbn = isbn;
-            if (author.Length>0)
+            if (author.Length > 0)
             {
                 this.author = author;
             }
-            if (name.Length>0)
+
+            if (name.Length > 0)
             {
                 this.name = name;
             }
-            if (publishingHouse.Length>0)
+
+            if (publishingHouse.Length > 0)
             {
                 this.publishingHouse = publishingHouse;
             }
-            if (publishingYear>INITIAL_YEAR && publishingYear<= CURRENT_YEAR)
+
+            if (publishingYear > INITIALYEAR && publishingYear <= CURRENTYEAR)
             {
                 this.publishingYear = publishingYear;
             }
-            if (numberOfPages>0)
+
+            if (numberOfPages > 0)
             {
                 this.numberOfPages = numberOfPages;
             }
-            if (price>=0)
+
+            if (price >= 0)
             {
                 this.price = price;
             }
         }
         #endregion
 
+        #region Public properties
+
+        public string Isbn => isbn;
+
+        public string Author => author;
+
+        public string Name => name;
+
+        public string PublishingHouse => publishingHouse;
+
+        public int PublishingYear => publishingYear;
+
+        public int NumberOfPages => numberOfPages;
+
+        public double Price => price;
+
+        #endregion      
+
         #region Public methods
         public override string ToString()
         {
-            return Isbn.ToString() + ' ' + author + ' ' + name + ' ' +
+            return Isbn + ' ' + author + ' ' + name + ' ' +
                 publishingHouse + ' ' + publishingYear.ToString() + ' ' +
                 numberOfPages.ToString() + ' ' + price.ToString();
         }
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(obj, null))
             {
                 return false;
             }
+
             if (obj.GetType() != this.GetType())
             {
                 return false;
             }
+
             if (ReferenceEquals(obj, this))
             {
                 return true;
             }
-            return Equals((Book)obj);
+
+            return this.Equals((Book)obj);
         }
+
         public bool Equals(Book book)
         {
             if (this.Isbn == book.Isbn &&
@@ -99,8 +117,7 @@ namespace BookLibrary
                 this.PublishingHouse == book.PublishingHouse &&
                 this.publishingYear == book.PublishingYear &&
                 this.NumberOfPages == book.NumberOfPages &&
-                this.Price - book.Price <= EPS
-                )
+                this.Price - book.Price <= EPS)
             {
                 return true;
             }
@@ -109,6 +126,7 @@ namespace BookLibrary
                 return false;
             }
         }
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
@@ -125,14 +143,13 @@ namespace BookLibrary
             {
                 return 0;
             }
+
             if (firstBook.Price - secondBook.Price < 0)
             {
                 return -1;
             }
-            //if (firstBook.Price - secondBook.Price > 0)
-            //{
-                return 1;
-            //}
+
+            return 1;
         }
 
         public new bool Equals(object firstBook, object secondBook)
@@ -141,14 +158,17 @@ namespace BookLibrary
             {
                 return false;
             }
+
             if (secondBook == null)
             {
                 return false;
             }
+
             if (secondBook.GetType() != firstBook.GetType())
             {
                 return false;
             }
+
             return firstBook.Equals(secondBook);
         }
 

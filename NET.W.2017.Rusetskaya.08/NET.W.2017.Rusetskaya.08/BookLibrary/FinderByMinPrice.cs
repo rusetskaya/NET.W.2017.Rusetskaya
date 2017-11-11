@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BookLibrary.Book;
 using static BookLibrary.BookListService;
-using  static BookLibrary.Book;
 
 namespace BookLibrary
 {
@@ -16,6 +16,7 @@ namespace BookLibrary
             {
                 throw new ArgumentNullException(nameof(books));
             }
+
             double tempPrice = books[0].Price;
             Book resultBook = books[0];
             for (int i = 1; i < books.Count; i++)
@@ -26,6 +27,7 @@ namespace BookLibrary
                     resultBook = books[i];
                 }
             }
+
             return resultBook;
         }
     }

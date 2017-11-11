@@ -84,9 +84,29 @@ namespace BookLibrary
         #region Public methods
         public override string ToString()
         {
-            return Isbn + ' ' + author + ' ' + name + ' ' +
-                publishingHouse + ' ' + publishingYear.ToString() + ' ' +
-                numberOfPages.ToString() + ' ' + price.ToString();
+            return $"Isbn: {Isbn}, author: {Author}, name: {Name}, publishingHouse: {PublishingHouse}, " +
+                $"publishingYear: {PublishingYear}, numberOfPages: {NumberOfPages}, price: {Price}";
+        }
+
+        public string ToString(string format)
+        {
+            switch (format)
+            {
+                case "ANT":
+                    return string.Format(new BookFormatter(), "{0:ANT}", this);
+
+                case "ANTPY":
+                    return string.Format(new BookFormatter(), "{0:ANTPY}", this);
+
+                case "IFIANTPYPP":
+                    return string.Format(new BookFormatter(), "{0:IFIANTPYPP}", this);
+
+                case "IFIANTPYPPP":
+                    return string.Format(new BookFormatter(), "{0:IFIANTPYPPP}", this);
+
+                default:
+                    return this.ToString();
+            }
         }
 
         public override bool Equals(object obj)

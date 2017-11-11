@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace BankAccount
 {
+    public enum BonusTypes
+    {
+        Addition = 1,
+        Subtraction
+    }
+
     public abstract class BankAccount
     {
         private int id;
@@ -16,9 +22,34 @@ namespace BankAccount
         private int bonus = 1;
         private string gradation = "Base";
 
+        protected BankAccount(int id, string name, string surname, long sum, int bonus)
+        {
+            this.id = id;
+            if (name.Length  > 0)
+            {
+                this.name = name;
+            }
+
+            if (surname.Length > 0)
+            {
+                this.surname = surname;
+            }
+
+            Sum = sum;
+            Bonus = bonus;
+            Gradation = gradation;
+        }
+
+        protected BankAccount()
+        {
+        }
+
         public int Id => id;
+
         public string Name => name;
+
         public string Surname => surname;
+
         public long Sum
         {
             get => sum;
@@ -33,24 +64,8 @@ namespace BankAccount
                 bonus = value;
             }
         }
-        public string Gradation { get; set; }
 
-        protected BankAccount(int id, string name, string surname, long sum, int bonus)
-        {
-            this.id = id;
-            if (name.Length>0)
-            {
-                this.name = name;
-            }
-            if (surname.Length>0)
-            {
-                this.surname = surname;
-            }
-            Sum = sum;
-            Bonus = bonus;
-            Gradation = gradation;
-            
-        }
+        public string Gradation { get; set; }
 
         public void AddAccontInfo(int id, string name, string surname, long sum, int bonus)
         {
@@ -61,14 +76,13 @@ namespace BankAccount
             Bonus = bonus;
         }
 
-        protected BankAccount(){}
-
         public void AddSumToAccuunt(long sum)
         {
-            if (sum<=0)
+            if (sum <= 0)
             {
                 throw new ArgumentException(nameof(sum));
             }
+
             CountBonus(sum, BonusTypes.Addition);
             Sum += sum;
         }
@@ -79,11 +93,13 @@ namespace BankAccount
             {
                 throw new ArgumentException(nameof(sum));
             }
-            if (Sum<sum)
+
+            if (Sum < sum)
             {
                 Console.WriteLine("Not enough sum");
                 throw new ArgumentException();
             }
+
             CountBonus(sum, BonusTypes.Subtraction);
             Sum -= sum;
         }
@@ -94,12 +110,5 @@ namespace BankAccount
         }
 
         protected abstract void CountBonus(long accruedSum, BonusTypes type);
-
-    }
-
-    public enum BonusTypes
-    {
-        Addition = 1,
-        Subtraction
     }
 }

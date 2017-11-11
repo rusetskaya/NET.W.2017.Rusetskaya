@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BankAccount.BankAccount;
 using static BankAccount.BaseAccount;
 using static BankAccount.GoldAccount;
 using static BankAccount.PlatinumAccount;
-using static BankAccount.BankAccount;
 
 namespace BankAccount
 {
@@ -19,26 +19,30 @@ namespace BankAccount
             {
                 bankAccount = new BaseAccount();
             }
+
             if (accountType.Equals(GoldAccount.GRADATION))
             {
                 bankAccount = new GoldAccount();
             }
+
             if (accountType.Equals(PlatinumAccount.GRADATION))
             {
                 bankAccount = new PlatinumAccount();
             }
+
             return bankAccount;
         }
+
         public void CloseBankAccount(BankAccount bankAccount)
         {
             bankAccount = null;
         }
     }
 
-    //enum AccountType
-    //{
-    //    Base,
-    //    Gold,
-    //    Platinum
-    //}
+    ////enum AccountType
+    ////{
+    ////    Base,
+    ////    Gold,
+    ////    Platinum
+    ////}
 }

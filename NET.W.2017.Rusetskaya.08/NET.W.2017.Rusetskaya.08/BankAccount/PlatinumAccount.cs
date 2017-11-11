@@ -10,7 +10,12 @@ namespace BankAccount
     public class PlatinumAccount : BankAccount
     {
         public const string GRADATION = "Platinum";
-        public PlatinumAccount() { Gradation = GRADATION; }
+
+        public PlatinumAccount()
+        {
+            this.Gradation = GRADATION;
+        }
+
         public PlatinumAccount(int id, string name, string surname, long sum, int bonus, string gradation) : base(id, name, surname, sum, bonus)
         {
             this.Gradation = GRADATION;
@@ -20,14 +25,15 @@ namespace BankAccount
         {
             if (type == BonusTypes.Addition)
             {
-                Bonus += (int)((Sum + accruedSum) / Sum) + 2;
+                this.Bonus += (int)((Sum + accruedSum) / Sum) + 2;
             }
+
             if (type == BonusTypes.Subtraction)
             {
-                int temp = (int)((Sum + accruedSum) / Sum)+2;
-                if (Bonus - temp >= 0)
+                int temp = (int)((Sum + accruedSum) / Sum) + 2;
+                if (this.Bonus - temp >= 0)
                 {
-                    Bonus -= temp;
+                    this.Bonus -= temp;
                 }
             }
         }

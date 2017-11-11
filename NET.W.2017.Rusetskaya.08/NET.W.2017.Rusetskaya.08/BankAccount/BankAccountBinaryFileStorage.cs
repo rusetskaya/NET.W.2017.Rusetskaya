@@ -10,7 +10,7 @@ namespace BankAccount
 {
     public class BankAccountBinaryFileStorage : IBankAccountStorage
     {
-        const string FILENAME = "BankAccount.dat";
+        private const string FILENAME = "BankAccount.dat";
 
         public IEnumerable<BankAccount> ReadFromStorage()
         {

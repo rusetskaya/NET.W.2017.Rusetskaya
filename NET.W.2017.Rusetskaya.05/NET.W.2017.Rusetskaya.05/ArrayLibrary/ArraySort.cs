@@ -22,12 +22,19 @@ namespace ArrayLibrary
         /// </summary>
         public class ComparerSumByInc : IComparer<int[]>
         { 
+            /// <summary>
+            /// Compare
+            /// </summary>
+            /// <param name="lhs"></param>
+            /// <param name="rhs"></param>
+            /// <returns>-1, 1 or diff</returns>
             public int Compare(int[] lhs, int[] rhs)
             {
                 if (lhs == null)
                 {
                     return 1;
                 }
+
                 if (rhs == null)
                 {
                     return -1;
@@ -41,16 +48,24 @@ namespace ArrayLibrary
         /// </summary>
         public class ComparerSumByDec : IComparer<int[]>
         { 
+            /// <summary>
+            /// Compare
+            /// </summary>
+            /// <param name="lhs"></param>
+            /// <param name="rhs"></param>
+            /// <returns> -1, 1 or diff </returns>
             public int Compare(int[] lhs, int[] rhs)
             {
                 if (lhs == null)
                 {
                     return -1; 
                 }
+
                 if (rhs == null)
                 {
                     return 1;
                 }
+
                 return rhs.Sum() - lhs.Sum();
             }
         }
@@ -59,6 +74,12 @@ namespace ArrayLibrary
         /// </summary>
         public class ComparerMaxByInc : IComparer<int[]>
         {
+            /// <summary>
+            /// Compare
+            /// </summary>
+            /// <param name="lhs"></param>
+            /// <param name="rhs"></param>
+            /// <returns> -1, 1 or diff </returns>
             public int Compare(int[] lhs, int[] rhs)
             {
                 if (lhs == null)
@@ -76,7 +97,13 @@ namespace ArrayLibrary
         /// compare max by dec
         /// </summary>
         public class ComparerMaxByDec : IComparer<int[]>
-        { 
+        {
+            /// <summary>
+            /// Compare
+            /// </summary>
+            /// <param name="lhs"></param>
+            /// <param name="rhs"></param>
+            /// <returns> -1, 1 or diff </returns>
             public int Compare(int[] lhs, int[] rhs)
             {
                 if (lhs == null)
@@ -95,6 +122,12 @@ namespace ArrayLibrary
         /// </summary>
         public class ComparerMinByInc : IComparer<int[]>
         {
+            /// <summary>
+            /// Compare
+            /// </summary>
+            /// <param name="lhs"></param>
+            /// <param name="rhs"></param>
+            /// <returns> -1, 1 or diff </returns>
             public int Compare(int[] lhs, int[] rhs)
             {
                 if (lhs == null)
@@ -113,6 +146,12 @@ namespace ArrayLibrary
         /// </summary>
         public class ComparerMinByDec : IComparer<int[]>
         {
+            /// <summary>
+            /// Compare
+            /// </summary>
+            /// <param name="lhs"></param>
+            /// <param name="rhs"></param>
+            /// <returns> -1, 1 or diff </returns>
             public int Compare(int[] lhs, int[] rhs)
             {
                 if (lhs == null)
@@ -129,6 +168,11 @@ namespace ArrayLibrary
 
         public static class ArrayHelper
         {
+            /// <summary>
+            /// Sort
+            /// </summary>
+            /// <param name="jaggedArray"></param>
+            /// <param name="comparer"></param>
             public static void BubbleSort(int[][] jaggedArray, IComparer<int[]> comparer)
             {
                 if (jaggedArray == null)
@@ -165,6 +209,13 @@ namespace ArrayLibrary
                 }
             }
         }
+
+        /// <summary>
+        /// Swap
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
         public static void Swap<T>(ref T a, ref T b)
         {
             T t = a;
@@ -172,6 +223,11 @@ namespace ArrayLibrary
             b = t;
         }
 
+        /// <summary>
+        /// Sum of Row El-s
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static int SumOfRowElemets(int[] array) => array.Sum();
     }
 }

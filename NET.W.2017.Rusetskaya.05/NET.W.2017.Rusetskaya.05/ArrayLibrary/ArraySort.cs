@@ -8,14 +8,19 @@ namespace ArrayLibrary
 {
     public class ArraySort
     {
+        /*
         public interface IComparer
         {
             int Compare(int[] lhs, int[] rhs);
         }
+        */
+
+        public delegate int CompareDlgt(int[] lhs, int[] rhs);
+
         /// <summary>
         /// Compare sum by inc
         /// </summary>
-        public class ComparerSumByInc : IComparer
+        public class ComparerSumByInc : IComparer<int[]>
         { 
             public int Compare(int[] lhs, int[] rhs)
             {
@@ -34,7 +39,7 @@ namespace ArrayLibrary
         /// <summary>
         /// Compare sum by dec
         /// </summary>
-        public class ComparerSumByDec : IComparer
+        public class ComparerSumByDec : IComparer<int[]>
         { 
             public int Compare(int[] lhs, int[] rhs)
             {
@@ -52,7 +57,7 @@ namespace ArrayLibrary
         /// <summary>
         /// compare max by inc
         /// </summary>
-        public class ComparerMaxByInc : IComparer
+        public class ComparerMaxByInc : IComparer<int[]>
         {
             public int Compare(int[] lhs, int[] rhs)
             {
@@ -70,7 +75,7 @@ namespace ArrayLibrary
         /// <summary>
         /// compare max by dec
         /// </summary>
-        public class ComparerMaxByDec : IComparer
+        public class ComparerMaxByDec : IComparer<int[]>
         { 
             public int Compare(int[] lhs, int[] rhs)
             {
@@ -88,7 +93,7 @@ namespace ArrayLibrary
         /// <summary>
         /// compare min by inc
         /// </summary>
-        public class ComparerMinByInc : IComparer
+        public class ComparerMinByInc : IComparer<int[]>
         {
             public int Compare(int[] lhs, int[] rhs)
             {
@@ -106,7 +111,7 @@ namespace ArrayLibrary
         /// <summary>
         /// compare min by dec
         /// </summary>
-        public class ComparerMinByDec : IComparer
+        public class ComparerMinByDec : IComparer<int[]>
         {
             public int Compare(int[] lhs, int[] rhs)
             {
@@ -124,7 +129,7 @@ namespace ArrayLibrary
 
         public static class ArrayHelper
         {
-            public static void BubbleSort(int[][] jaggedArray, IComparer comparer)
+            public static void BubbleSort(int[][] jaggedArray, IComparer<int[]> comparer)
             {
                 if (jaggedArray == null)
                 {
@@ -135,6 +140,24 @@ namespace ArrayLibrary
                     for (int j = 0; j < jaggedArray.Length - 1; j++)
                     {
                         if (comparer.Compare(jaggedArray[j], jaggedArray[j + 1]) > 0)
+                        {
+                            Swap(ref jaggedArray[j], ref jaggedArray[j + 1]);
+                        }
+                    }
+                }
+            }
+
+            public static void BubbleSortWithDlgt(int[][] jaggedArray, CompareDlgt cdlgt)
+            {
+                if (jaggedArray == null)
+                {
+                    throw new ArgumentNullException(nameof(jaggedArray));
+                }
+                for (int i = 1; i < jaggedArray.Length; i++)
+                {
+                    for (int j = 0; j < jaggedArray.Length - 1; j++)
+                    {
+                        if (cdlgt(jaggedArray[j], jaggedArray[j + 1]) > 0)
                         {
                             Swap(ref jaggedArray[j], ref jaggedArray[j + 1]);
                         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,13 @@ namespace IntegerLibrary
 {
     public static class GreatestCommonDivisor
     {
+        public delegate Tuple<int, int> CountGreatestCommonDivisorWithEuclidsAlgorithm(params int[] numbers);
+
+        ////private static CountGreatestCommonDivisorWithEuclidsAlgorithm dlgt1 = EuclidsAlgorithm;
+        ////private static CountGreatestCommonDivisorWithEuclidsAlgorithm dlgt2 = EuclidsAlgorithm;
+        //// EuclidsAlgorithm should use delegate and be shorter
+        //// What about Steins Algorithm ---?
+
         /// <summary>
         /// Counts Greatest Common Divisor
         /// </summary>

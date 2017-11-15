@@ -8,48 +8,47 @@ namespace BinarySearchLibrary
 {
     public static class BinarySearchAlgorithm
     {
-        public static bool BinarySearch<T>(T[] array, T x, IComparer<T> comparer = null)
+        public static bool? BinarySearch<T>(T[] array, T key, IComparer<T> comparer)
         {
-            if (array == null) throw new ArgumentNullException($"{nameof(array)} is null");
-            if (comparer == null && typeof(T).GetInterface("IComparable`1") != null || typeof(T).GetInterface("IComparable") != null)
+            if (ReferenceEquals(array, null))
+            {
+                throw new ArgumentNullException($"{nameof(array)} is null");
+            }
+
+            if (ReferenceEquals(comparer, null))
+            {
                 comparer = Comparer<T>.Default;
-            else throw new ArgumentException("Values mustn't comparer.");
-            return Find(array, x, 0, array.Length - 1, comparer);
+            }
+
+            return Search(array, key, comparer);
         }
 
-        public static bool BinarySearch<T>(T[] array, T x, Comparison<T> comparison)
+        public static bool? BinarySearch<T>(T[] array, T key, Comparison<T> comparison)
         {
-            return BinarySearch(array, x, new AdapterComparer<T>(comparison));
+            return BinarySearch(array,key, new AdapterComparer<T>(comparison));
         }
 
-        private static bool Find<T>(T[] a, T x, int l, int r, IComparer<T> comparer)
+        private static bool? Search<T>(T[] array, T key, IComparer<T> comparer)
         {
-            if (l > r)
+            return Search(array, key, 0, array.Length - 1, comparer);
+        }
+
+        private static bool? Search<T>(T[] array, T key, int lhs, int rhs, IComparer<T> comparer)
+        {
+            if (array.Length == 0 || comparer.Compare(key, array[lhs]) < 0 || comparer.Compare(key, array[rhs]) > 0)
                 return false;
-            if (comparer.Compare(x, a[l]) < 0 || comparer.Compare(x, a[r]) > 0)
-                return false;
-            int m = (l + r) / 2;
-            if (comparer.Compare(x, a[m]) == 0)
+            int mid = (lhs + rhs) / 2;
+            if (comparer.Compare(key, array[mid]) == 0)
                 return true;
-            if (comparer.Compare(x, a[m]) < 0)
-                return Find(a, x, l, m - 1, comparer);
-            if (comparer.Compare(x, a[m]) > 0)
-                return Find(a, x, m + 1, r, comparer);
-            return false;
-        }
-
-        private class AdapterComparer<T> : IComparer<T>
-        {
-            private Comparison<T> comparison;
-
-            public AdapterComparer(Comparison<T> comparison)
+            if (comparer.Compare(key, array[mid]) < 0)
             {
-                this.comparison = comparison;
+                return Search(array, key, lhs, mid - 1, comparer);
             }
-            public int Compare(T x, T y)
+            if (comparer.Compare(key, array[mid]) > 0)
             {
-                return this.comparison(x, y);
+                return Search(array, key, mid + 1, rhs, comparer);
             }
+            return null;
         }
     }
 

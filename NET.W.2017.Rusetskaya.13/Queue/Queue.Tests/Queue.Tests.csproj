@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Queue\Queue.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="MonoTouch.NUnitLite">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\MonoTouch\v1.0\MonoTouch.NUnitLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

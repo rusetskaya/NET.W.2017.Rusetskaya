@@ -8,13 +8,16 @@ using System.Threading.Tasks;
 /*
 Разработать обобщенный класс-коллекцию BinarySearchTree (бинарное дерево поиска). 
 Предусмотреть возможности использования подключаемого интерфейса для реализации отношения порядка. 
-Реализовать три способа обхода дерева: прямой (preorder), поперечный (inorder), обратный (postorder): 
+Реализовать три способа обхода дерева: 
+-прямой (preorder), 
+-поперечный (inorder), 
+-обратный (postorder): 
 для реализации использовать блок-итератор (yield). Протестировать разработанный класс, используя следующие типы:
-System.Int32 (использовать сравнение по умолчанию и подключаемый компаратор); 
-System.String (использовать сравнение по умолчанию и подключаемый компаратор); 
-пользовательский класс Book, для объектов которого реализовано отношения порядка 
+- System.Int32 (использовать сравнение по умолчанию и подключаемый компаратор); 
+- System.String (использовать сравнение по умолчанию и подключаемый компаратор); 
+- пользовательский класс Book, для объектов которого реализовано отношения порядка 
 (использовать сравнение по умолчанию и подключаемый компаратор); 
-пользовательскую структуру Point, для объектов которого не реализовано отношения порядка 
+- пользовательскую структуру Point, для объектов которого не реализовано отношения порядка 
 (использовать подключаемый компаратор). 
 */
 
@@ -281,6 +284,75 @@ namespace BinarySearchTree
                         {
                             parent.Right = lastLeft;
                         }
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<T> PreorderTraversal()
+        {
+            Node<T> currentNode = root;
+            Stack<Node<T>> tree = new Stack<Node<T>>();
+
+            while (true)
+            {
+                while (currentNode != null)
+                {
+                    yield return currentNode.Value;
+                    tree.Push(currentNode);
+                    currentNode = currentNode.Left;
+                }
+
+                if (tree.Count == 0)
+                {
+                    break;
+                }
+
+                currentNode = tree.Pop();
+                currentNode = currentNode.Right;
+            }
+        }
+
+        public IEnumerable<T> PostorderTraversal()
+        {
+            Node<T> current = root;
+            Stack<Node<T>> tree = new Stack<Node<T>>();
+            tree.Push(current);
+            bool finishedSubtreesR = false;
+            bool finishedSubtreesL = false;
+            bool isLeaf = false;
+
+            while (tree.Count != 0)
+            {
+                Node<T> next = tree.Peek();
+                if (!ReferenceEquals(next.Right, null))
+                {
+                    finishedSubtreesR = comparison.Invoke(next.Right.Value, current.Value) == 0;
+                }
+
+                if (!ReferenceEquals(next.Left, null))
+                {
+                    finishedSubtreesL = comparison.Invoke(next.Left.Value, current.Value) == 0;
+                }
+
+                isLeaf = next.Left == null && next.Right == null;
+
+                if (finishedSubtreesR || finishedSubtreesL || isLeaf)
+                {
+                    tree.Pop();
+                    yield return next.Value;
+                    current = next;
+                }
+                else
+                {
+                    if (next.Right != null)
+                    {
+                        tree.Push(next.Right);
+                    }
+
+                    if (next.Left != null)
+                    {
+                        tree.Push(next.Left);
                     }
                 }
             }

@@ -41,7 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BinarySearchTree.cs" />
+    <Compile Include="Book.cs" />
+    <Compile Include="BookComparer.cs" />
+    <Compile Include="Point.cs" />
+    <Compile Include="PointComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemInt32Comparer.cs" />
+    <Compile Include="SystemStringComparer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

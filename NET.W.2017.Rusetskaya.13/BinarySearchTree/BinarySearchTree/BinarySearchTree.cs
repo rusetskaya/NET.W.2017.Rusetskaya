@@ -360,12 +360,12 @@ namespace BinarySearchTree
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return PreorderTraversal().GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return PreorderTraversal().GetEnumerator();
         }
 
         private Comparison<T> DefaultCompare()

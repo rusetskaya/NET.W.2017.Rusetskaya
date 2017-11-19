@@ -44,15 +44,23 @@ namespace MatrixLibrary
             set => dimension = value;
         }
 
+        public event EventHandler<ChangeElementEventArgs> ChangeElement = delegate { };
+
         protected abstract T GetElementOfMatrix(int i, int j);
+
         protected abstract void ChangeElementOfMatrix(T value, int i, int j);
 
         protected virtual void ValidationOfIndexes(int i, int j)
         {
-            if (i < 0 || j < 0 || i >= Dimension || j >= Dimension )
+            if (i < 0 || j < 0 || i >= Dimension || j >= Dimension)
             {
                 throw new ArgumentOutOfRangeException($"{nameof(i)} {nameof(j)}");
             }
+        }
+
+        protected virtual void OnChangeElement(ChangeElementEventArgs args)
+        {
+            ChangeElement?.Invoke(this, args);
         }
 
         public IEnumerator<T> GetEnumerator()

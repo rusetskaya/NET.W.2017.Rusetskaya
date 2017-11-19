@@ -57,7 +57,14 @@ namespace MatrixLibrary
 
         public IEnumerator<T> GetEnumerator()
         {
-            
+            for (int i = 1; i <= Dimension; i++)
+            {
+                for (int j = 1; j <= Dimension; j++)
+                {
+                    ValidationOfIndexes(i, j);
+                    yield return GetElementOfMatrix(i, j);
+                }
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()

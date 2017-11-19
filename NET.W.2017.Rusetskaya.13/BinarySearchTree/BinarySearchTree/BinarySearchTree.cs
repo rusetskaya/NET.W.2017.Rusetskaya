@@ -81,6 +81,7 @@ namespace BinarySearchTree
             {
                 throw new ArgumentNullException(nameof(values));
             }
+
             foreach (T value in values)
             {
                 Insert(value);
@@ -128,13 +129,21 @@ namespace BinarySearchTree
                     node = node.Right;
                 }
             }
-            if (ReferenceEquals(root, null)) root = new Node<T>(newNode);
+
+            if (ReferenceEquals(root, null))
+            {
+                root = new Node<T>(newNode);
+            }
             else
             {
                 if (comparison.Invoke(parent.Value, newNode) > 0)
+                {
                     parent.Left = new Node<T>(newNode);
+                }
                 else
+                {
                     parent.Right = new Node<T>(newNode);
+                }
             }
         }
 
@@ -144,6 +153,7 @@ namespace BinarySearchTree
             {
                 throw new ArgumentNullException(nameof(curNode));
             }
+
             Node<T> node = root;
             while (!ReferenceEquals(node, null))
             {
@@ -187,6 +197,7 @@ namespace BinarySearchTree
                     root = null;
                     return;
                 }
+
                 if (ReferenceEquals(parent.Left, null))
                 {
                     if (comparison.Invoke(node.Value, parent.Left.Value) == 0)
@@ -194,6 +205,7 @@ namespace BinarySearchTree
                         parent.Left = null;
                     }
                 }
+
                 if (ReferenceEquals(parent.Right, null))
                 {
                     if (comparison.Invoke(node.Value, parent.Right.Value) == 0)
@@ -211,6 +223,7 @@ namespace BinarySearchTree
                         root = node.Left;
                         return;
                     }
+
                     if (comparison.Invoke(node.Value, parent.Value) < 0)
                     {
                         parent.Left = node.Left;
@@ -230,11 +243,16 @@ namespace BinarySearchTree
                             root = node.Right;
                             return;
                         }
+
                         node.Right.Left = node.Left;
                         if (comparison.Invoke(node.Value, parent.Value) < 0)
+                        {
                             parent.Left = node.Right;
+                        }
                         else
+                        {
                             parent.Right = node.Right;
+                        }
                     }
                     else
                     {
@@ -245,6 +263,7 @@ namespace BinarySearchTree
                             lastLeftParent = lastLeft;
                             lastLeft = lastLeft.Left;
                         }
+
                         lastLeftParent.Left = lastLeft.Right;
                         lastLeft.Left = node.Left;
                         lastLeft.Right = node.Right;
@@ -253,10 +272,15 @@ namespace BinarySearchTree
                             root = lastLeft;
                             return;
                         }
+
                         if (comparison.Invoke(node.Value, parent.Value) < 0)
+                        {
                             parent.Left = lastLeft;
+                        }
                         else
+                        {
                             parent.Right = lastLeft;
+                        }
                     }
                 }
             }

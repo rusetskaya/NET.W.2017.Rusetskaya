@@ -44,7 +44,7 @@
     <Compile Include="DTO\IEntity.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
-    <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\IAccountRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

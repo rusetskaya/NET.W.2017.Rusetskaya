@@ -1,4 +1,4 @@
-﻿namespace DAL.Interface.DTO
+﻿namespace DAL.Interfacies.DTO
 {
     public interface IEntity
     {

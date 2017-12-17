@@ -40,8 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DTO\DalRole.cs" />
-    <Compile Include="DTO\DalUser.cs" />
+    <Compile Include="DTO\DalAccount.cs" />
     <Compile Include="DTO\IEntity.cs" />
     <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />

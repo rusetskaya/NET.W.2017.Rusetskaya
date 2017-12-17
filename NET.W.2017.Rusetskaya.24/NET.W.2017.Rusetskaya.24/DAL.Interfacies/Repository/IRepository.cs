@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using DAL.Interface.DTO;
+using DAL.Interfacies.DTO;
 
 namespace DAL.Interface.Repository
 {
-    public interface IRepository<TEntity> where TEntity : IEntity
+    public interface IRepository<TEntity> where TEntity : DalAccount
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(int key);

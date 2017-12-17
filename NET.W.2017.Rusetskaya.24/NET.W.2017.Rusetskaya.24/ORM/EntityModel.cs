@@ -9,14 +9,25 @@ namespace ORM
         {
         }
 
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
+        public virtual DbSet<AccountType> AccountTypes { get; set; }
+        public virtual DbSet<Owner> Owners { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Role>()
-                .HasMany(e => e.Users)
-                .WithRequired(e => e.Role)
+            modelBuilder.Entity<Account>()
+                .Property(e => e.Balance)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<AccountType>()
+                .HasMany(e => e.Accounts)
+                .WithRequired(e => e.AccountType)
+                .HasForeignKey(e => e.Id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Owner>()
+                .HasMany(e => e.Accounts)
+                .WithRequired(e => e.Owner)
                 .WillCascadeOnDelete(false);
         }
     }
